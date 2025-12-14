@@ -1,0 +1,29 @@
+---
+import type { ReferenceDataEntry } from 'astro:content'
+
+type Props = {
+	tags?: ReferenceDataEntry<'tags', string>[]
+	link?: boolean
+	maxTags?: number
+}
+
+const { tags = [{ id: 'untagged' }], maxTags, link } = Astro.props
+const showTags = maxTags ? tags.slice(0, maxTags) : tags
+---
+
+<div class="flex gap-2">
+	{
+		showTags.map((tag) =>
+			link ? (
+				<a
+					href={`/notes/tag/${tag.id}/1`}
+					class="rounded-full bg-muted px-3 py-1 text-xs hover:border-primary/50 hover:bg-secondary/50"
+				>
+					{tag.id}
+				</a>
+			) : (
+				<span class="rounded-full bg-muted px-3 py-1 text-xs">{tag.id}</span>
+			)
+		)
+	}
+</div>

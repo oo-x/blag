@@ -1,0 +1,17 @@
+{
+  "name": "blag",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/vite": "^4.1.15",
+    "astro": "^5.16.0",
+    "tailwindcss": "^4.1.15"
+  }
+}

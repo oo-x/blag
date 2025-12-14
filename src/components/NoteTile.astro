@@ -1,0 +1,28 @@
+---
+import TagList from '@/components/TagList.astro'
+import FormattedDate from '@/components/FormattedDate.astro'
+import type { CollectionEntry } from 'astro:content'
+type Props = { note: CollectionEntry<'notes'> }
+const { note } = Astro.props
+---
+
+<article
+	class="group rounded-md border bg-secondary/30 p-4 hover:border-primary/50 hover:bg-secondary/50 hover:shadow-lg"
+>
+	<a href={`/notes/${note.id}/`} class="flex flex-col gap-3">
+		<h2 class="text-2xl font-semibold group-hover:text-primary">
+			{note.data.title}
+		</h2>
+		{
+			note.data.description && (
+				<p class="line-clamp-2 text-muted-foreground">
+					{note.data.description}
+				</p>
+			)
+		}
+		<div class="flex items-center gap-4 text-sm text-muted-foreground">
+			<FormattedDate date={note.data.updated ?? note.data.created} />
+			<TagList tags={note.data.tags} maxTags={3} />
+		</div>
+	</a>
+</article>

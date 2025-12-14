@@ -1,0 +1,51 @@
+---
+import ArrowLeft from '@/assets/arrow-left.svg'
+import ArrowRight from '@/assets/arrow-right.svg'
+import type { Page } from 'astro'
+type Props = { page: Page }
+const { page } = Astro.props
+---
+
+<nav class="flex items-center justify-between pt-4" aria-label="Pagination">
+	<div class="group flex gap-2">
+		{
+			page.url.prev ? (
+				<a
+					href={page.url.prev}
+					class="inline-flex items-center rounded-sm border bg-secondary/30 px-4 py-2 text-sm hover:border-primary/50 hover:bg-secondary/50"
+				>
+					<ArrowLeft class="mr-2 transition-transform group-hover:-translate-x-1" />
+					Prev
+				</a>
+			) : (
+				<span class="inline-flex cursor-not-allowed items-center rounded-sm border bg-secondary/20 px-4 py-2 text-sm font-medium text-muted-foreground opacity-50">
+					<ArrowLeft class="mr-2" />
+					Prev
+				</span>
+			)
+		}
+	</div>
+
+	<span class="text-sm text-muted-foreground">
+		Page {page.currentPage} of {page.lastPage}
+	</span>
+
+	<div class="group flex gap-2">
+		{
+			page.url.next ? (
+				<a
+					href={page.url.next}
+					class="inline-flex items-center rounded-sm border bg-secondary/30 px-4 py-2 text-sm hover:border-primary/50 hover:bg-secondary/50"
+				>
+					Next
+					<ArrowRight class="ml-2 transition-transform group-hover:translate-x-1" />
+				</a>
+			) : (
+				<span class="inline-flex cursor-not-allowed items-center rounded-sm border bg-secondary/20 px-4 py-2 text-sm font-medium text-muted-foreground opacity-50">
+					Next
+					<ArrowRight class="ml-2" />
+				</span>
+			)
+		}
+	</div>
+</nav>

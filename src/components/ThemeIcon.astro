@@ -1,0 +1,21 @@
+---
+
+---
+
+<button id="themer" aria-label="Toggle theme" class="rounded-sm border border-muted-foreground/70 p-1">
+	<svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" class="stroke-primary">
+		<path class="dark:hidden" d="M12 18a6 6 0 000-12 6 6 0 000 12zm-11-6h3m16 0h3m-11-11v3m0 16v3m8-19-2 2m-12 12-2 2m0-16 2 2m12 12 2 2"></path>
+		<path class="hidden dark:block" d="M14.8 4a9 9 0 01-10.8 10.8 9.4 9.4 0 01-.8-.3c-.4 0-.8.3-.7.7l.3.8a10 10 0 009.2 6 10 10 0 004-19.2l-.9-.3c-.3-.1-.7.3-.6.7l.3.8z"></path>
+	</svg>
+</button>
+
+<script is:inline>
+	const K = 'theme'
+	const L = 'light'
+	const D = 'dark'
+	const el = document.body
+	const cl = () => localStorage.setItem(K, el.classList.toggle(D) ? D : L)
+	document.getElementById('themer')?.addEventListener('click', cl)
+	if (localStorage.getItem(K) === L || !matchMedia('(prefers-color-scheme:dark)').matches) el.classList.add(D)
+	cl()
+</script>

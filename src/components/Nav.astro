@@ -1,0 +1,39 @@
+---
+import ThemeIcon from '@/components/ThemeIcon.astro'
+const links = [
+	{
+		href: '/notes/1',
+		text: 'Notes',
+	},
+]
+---
+
+<nav
+	class="relative border-b border-border bg-secondary/20 p-4"
+	aria-label="Primary navigation"
+>
+	<div class="mx-auto flex max-w-6xl items-center justify-between">
+		<div class="flex items-center gap-2">
+			<a
+				href="/"
+				class="px-2 font-mono text-lg font-semibold transition-colors hover:text-primary"
+				>home</a
+			>
+			<div class="hidden gap-1 sm:flex">
+				{
+					links.map(({ text, ...ln }) => {
+						return (
+							<a
+								class="rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary/50"
+								{...ln}
+							>
+								{text}
+							</a>
+						)
+					})
+				}
+			</div>
+		</div>
+		<ThemeIcon />
+	</div>
+</nav>
