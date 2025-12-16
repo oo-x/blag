@@ -12,7 +12,7 @@ const links = [
 	class="relative border-b border-border bg-secondary/20 p-4"
 	aria-label="Primary navigation"
 >
-	<div class="mx-auto flex max-w-6xl items-center justify-between">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
 		<div class="flex items-center gap-2">
 			<a
 				href="/"
@@ -34,6 +34,29 @@ const links = [
 				}
 			</div>
 		</div>
+		<div class="flex flex-1 items-center justify-center px-2">
+			<div class="w-full max-w-xs">
+				<input
+					type="search"
+					placeholder="Search notes..."
+					class="w-full rounded-lg border border-secondary bg-secondary/40 px-4 py-2 text-sm text-foreground placeholder-secondary transition-all duration-200 hover:bg-secondary/60 focus:border-primary focus:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
+					id="search-input"
+				/>
+			</div>
+		</div>
 		<ThemeIcon />
 	</div>
 </nav>
+
+<script>
+	const searchInput = document.getElementById('search-input');
+
+	searchInput?.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			const query = (e.target as HTMLInputElement).value.trim();
+			if (query) {
+				window.location.href = `/notes/?q=${encodeURIComponent(query)}`;
+			}
+		}
+	});
+</script>
