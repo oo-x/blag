@@ -39,7 +39,7 @@ const links = [
 				<input
 					type="search"
 					placeholder="Search notes..."
-					class="w-full rounded-lg border border-secondary bg-secondary/40 px-4 py-2 text-sm text-foreground placeholder-secondary transition-all duration-200 hover:bg-secondary/60 focus:border-primary focus:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
+					class="w-full rounded-lg border border-secondary bg-secondary/40 px-4 py-2 text-sm text-foreground placeholder-muted transition-all duration-200 hover:bg-secondary/60 focus:border-primary focus:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
 					id="search-input"
 				/>
 			</div>
@@ -48,15 +48,3 @@ const links = [
 	</div>
 </nav>
 
-<script>
-	const searchInput = document.getElementById('search-input');
-
-	searchInput?.addEventListener('keydown', (e) => {
-		if (e.key === 'Enter') {
-			const query = (e.target as HTMLInputElement).value.trim();
-			if (query) {
-				window.location.href = `/notes/?q=${encodeURIComponent(query)}`;
-			}
-		}
-	});
-</script>
